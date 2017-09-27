@@ -287,8 +287,6 @@ public class PrefManager {
         public static final String AppNotificationPushHash = "AppNotificationPushHash";
         public static final String AppUpgradeNeedSyncWithParse = "AppUpgradeNeedSyncWithParse";
         public static final String AppSettingNeedSyncWithParse = "AppSettingNeedSyncWithParse";
-        public static final String UserPrefVideoModel = "UserPrefVideoModel";
-        public static final String LAST_COURSE_STRUCTURE_FETCH = "LastCourseStructureFetch";
         public static final String DOWNLOAD_TO_SDCARD = "download_to_sdcard";
         /**
          * For downloaded videos to appear in order on the My Videos screen, we need
