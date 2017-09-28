@@ -7,13 +7,16 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.inject.Inject;
 
 import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
 import org.edx.mobile.base.BaseSingleFragmentActivity;
 import org.edx.mobile.event.NewVersionAvailableEvent;
+import org.edx.mobile.model.api.EnrolledCoursesResponse;
 import org.edx.mobile.module.analytics.Analytics;
+import org.edx.mobile.module.db.DataCallback;
 import org.edx.mobile.module.notification.NotificationDelegate;
 import org.edx.mobile.module.prefs.PrefManager;
 import org.edx.mobile.util.AppConstants;
@@ -22,6 +25,7 @@ import org.edx.mobile.util.IntentFactory;
 import org.edx.mobile.util.Version;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import de.greenrobot.event.EventBus;
 import roboguice.inject.InjectView;
@@ -45,6 +49,9 @@ public class MyCoursesListActivity extends BaseSingleFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("hack");
+
         initWhatsNew();
         setTitle(R.string.label_my_courses);
         addDrawer();
@@ -108,6 +115,17 @@ public class MyCoursesListActivity extends BaseSingleFragmentActivity {
         super.onResume();
         notificationDelegate.checkAppUpgrade();
     }
+
+    private DataCallback<Integer> dataCallback = new DataCallback<Integer>() {
+        @Override
+        public void onResult(Integer result) {
+        }
+
+        @Override
+        public void onFail(Exception ex) {
+            logger.error(ex);
+        }
+    };
 
     /**
      * Event bus callback for new app version availability event.

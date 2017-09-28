@@ -166,6 +166,7 @@ dependencies {
 
     // Google Firebase
     compile 'com.google.firebase:firebase-core:10.0.1'
+    compile 'com.google.firebase:firebase-messaging:10.0.1'
 
     // Segment Library
     compile 'com.segment.analytics.android:analytics:4.2.6'
@@ -265,8 +266,10 @@ android {
         minSdkVersion 14
         targetSdkVersion 21
 
-        versionCode getVersionCode()
-        versionName getVersionName()
+//        versionCode getVersionCode()
+        versionCode 9999
+//        versionName getVersionName()
+        versionName "99.99"
 
         renderscriptTargetApi 22
         renderscriptSupportModeEnabled true
