@@ -12,6 +12,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import org.edx.mobile.R;
+import org.edx.mobile.view.MainDashboardActivity;
 import org.edx.mobile.view.MyCoursesListActivity;
 
 public class NotificationService extends FirebaseMessagingService {
@@ -39,7 +40,7 @@ public class NotificationService extends FirebaseMessagingService {
         // your app to the Home screen.
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         // Adds the back stack for the Intent (but not the Intent itself)
-        stackBuilder.addParentStack(MyCoursesListActivity.class);
+        stackBuilder.addParentStack(MainDashboardActivity.class);
         // Adds the Intent that starts the Activity to the top of the stack
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent =

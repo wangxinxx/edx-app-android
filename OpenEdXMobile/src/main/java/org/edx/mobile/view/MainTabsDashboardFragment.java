@@ -137,6 +137,19 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
                     }));
         }
 
+        items.add(new FragmentItemModel(
+                NotificationsListFragment.class,
+                getResources().getString(R.string.label_notifications),
+                FontAwesomeIcons.fa_bell_o,
+                    new FragmentItemModel.FragmentStateListener() {
+                        @Override
+                        public void onFragmentSelected() {
+                            environment.getAnalyticsRegistry().trackScreenView(Analytics.Screens.MY_COURSES);
+                        }
+                    }
+                )
+        );
+
         return items;
     }
 
