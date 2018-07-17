@@ -81,6 +81,11 @@ public abstract class MainApplication extends MultiDexApplication {
      */
     private void init() {
         application = this;
+        // Disable RoboBlender to avoid annotation processor issues for now, as we already  have
+        // plans to move to some other DI framework.
+        // ref: https://github.com/roboguice/roboguice/wiki/RoboBlender-wiki#disabling-roboblender
+        // ref: https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration
+        RoboGuice.setUseAnnotationDatabases(false);
         injector = RoboGuice.getOrCreateBaseApplicationInjector((Application) this, RoboGuice.DEFAULT_STAGE,
                 (Module) RoboGuice.newDefaultRoboModule(this), (Module) new EdxDefaultModule(this));
 
