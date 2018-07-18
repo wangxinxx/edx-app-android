@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 buildscript {
     project.apply from: "${rootDir}/constants.gradle"
     dependencies {
-        classpath "com.android.tools.build:gradle:${GRADLE_VERSION}"
+        classpath "com.android.tools.build:gradle:${GRADLE_PLUGIN_VERSION}"
     }
     repositories {
         google()
